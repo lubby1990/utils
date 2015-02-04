@@ -32,8 +32,8 @@ public class ContainerTest {
 		Listener fl = new FatherListener();
 		Listener ml = new MotherListener();
 		
-		//create center container
-		Container container = new Container();
+		//create center container   and set the thread pool size 4;
+		Container container = new Container(4);
 		//register the event with listener
 		container.register(EatEvent.class, fl);
 		container.register(EatEvent.class, ml);

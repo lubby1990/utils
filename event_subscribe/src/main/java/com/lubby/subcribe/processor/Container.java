@@ -22,19 +22,20 @@ import com.lubby.subcribe.listener.Listener;
  */
 public class Container {
 	private BlockingQueue<Event> eventQueue ;
-	
 	private Map<Class<? extends Event>, List<Listener>> eventListenerList ;
 	private int threadPoolSize = 3;
-	
+	  ExecutorService es ;
 	public Container() {
 		eventQueue = new ArrayBlockingQueue<Event>(10);
 		eventListenerList = new HashMap<Class<? extends Event>, List<Listener>>();
+		es = Executors.newFixedThreadPool(threadPoolSize);
 		eventQueueHandler();
 	}
 	public Container(int threadPoolSize) {
 		this.threadPoolSize = threadPoolSize;
 		eventQueue =  new ArrayBlockingQueue<Event>(10);
 		eventListenerList = new HashMap<Class<? extends Event>, List<Listener>>();
+		es = Executors.newFixedThreadPool(threadPoolSize);
 		eventQueueHandler();
 	}
 
@@ -89,7 +90,7 @@ public class Container {
 		
 		List<Listener> eventListener = eventListenerList.get(eventClazz);
 		   
-	    ExecutorService es =  Executors.newFixedThreadPool(threadPoolSize);
+	  
 	    
 	    
 	    if(eventListener == null){
