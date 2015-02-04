@@ -63,7 +63,7 @@ public class Container {
 	
 	
 	public void eventQueueHandler(){
-		new Thread(new Runnable() {
+		Thread t = new Thread(new Runnable() {
 			public void run() {
 				while(true){
 					Event event = null;
@@ -79,7 +79,10 @@ public class Container {
 				}
 				
 			}
-		}).start();
+		});
+		//set the thread being not daemon thread
+		t.setDaemon(false);
+		t.start();
 	}
 	
 	
