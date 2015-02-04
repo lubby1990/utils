@@ -68,10 +68,8 @@ public class Container {
 				while(true){
 					Event event = null;
 					try {
-						if(!eventQueue.isEmpty()){
 							event = eventQueue.take();
 							callTheadOfListener(event);
-						}
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
