@@ -1,0 +1,4 @@
+a event subcribe module.it can register the listener with event.
+and it can buffer the event . then call the registered listener to 
+do some thing you want . it is asynchronous. the project named subcribe
+is the demo telling you how to use this tool.
